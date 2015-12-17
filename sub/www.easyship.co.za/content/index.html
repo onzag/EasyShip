@@ -1,0 +1,652 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible,refresh" content="IE=edge,chrome=1,600">
+		<title>Ship.co.zw</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<style>
+			body {
+				padding-top: 0px;
+				padding-bottom: 20px;
+			}
+		</style>
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/bootstrap-flat.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	</head>
+	<body>
+
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<div id="mainpage">
+			<nav class="navbar navbar-custom navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+		        
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/"><img class="logo" src="img/easyship_logo.svg"></a>
+					</div>
+
+					<button type="button" class="navbar-toggle collapsed" id="togglemenu"
+					    aria-expanded="false"
+					    aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<!-- INNER SIDEBAR MENU -->
+					<div id="menu" style="display:none">
+						<div class="visible-xs-block" id="innermenu">
+							<div class="inner-action">
+								<button type="button" class="btn-success if-not-logged" data-toggle="modal" data-target="#login" id="login-in-menu-toggler">LOG IN</button>
+								<h2 class="if-logged logged-username"></h2>
+							</div>
+							<div class="inner-primary">
+								<a href="/">HOME</a>
+								<a href="#">OUR ROUTES</a>
+								<a href="#">BE A DRIVER.</a>
+							</div>				
+							<div class="inner-secondary">
+								<ul style="list-style-type:none">
+									<li><a href="#">ABOUT US</a></li>
+									<li><a href="#">CAREERS</a></li>
+									<li><a href="#">HELP CENTER</a></li>
+									<li><a href="#">DOWNLOAD APP</a></li>
+								</ul>
+							</div>
+						</div>		
+					</div>
+
+					<form class="navbar-form navbar-right hidden-xs" role="form">
+						<button type="button" class="btn btn-default if-not-logged" data-toggle="modal" data-target="#login">Log in</button>
+						<h2 class="if-logged logged-username"></h2>
+					</form>
+					<!-- /END INNER SIDE BAR MENU -->
+
+					<div class="overlay" style="display:none"></div>
+				</div>
+			</nav>
+	  
+
+			<!-- Hero section -->
+			<div class="jumbotron">
+				<div class="container">
+					<div class="col-sm-3"></div>
+					<div class="col-xs-12 col-sm-6">
+						<h2 class="hero_title">Shipping <br>made easy</h2>
+						<h3 class="hero_text">We can pickup, do consolidated or full loads, in-house customs clearance and storage for the lowest prices.</h3>
+						<div class="row">
+							<a class="btn btn-primary btn-lg hero_btn btn_mcf_blue" id="book" role="button">Booking</a>
+							<a class="btn btn-default btn-lg hero_btn btn_mcf_trans" role="button">Tracking</a>
+						</div>
+						<h3 class="servicing">Servicing Johannesburg to Harare daily,<br> and the Southern Africa on request</h3>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+
+			<!-- Services - Shipping Section -->
+			<div class="services">
+				<div class="container">
+					<div class="col-sm-3"></div>
+					<div class="col-xs-12 col-sm-6">
+						<a><img class="img_services" src="img/icons/Ship_blue.svg"></a>
+						<h2 class="header_services">Ship</h2>
+						<h4>This is our awesome short shipping txt</h4>
+						<a class="mcf_links" href="#">Wanna learn more!</a>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+
+			<!-- Services - Customs Section -->
+			<div class="services"><div id="np"></div>
+				<div class="container">
+					<div class="col-sm-3"></div>
+					<div class="col-xs-12 col-sm-6">
+						<a><img class="img_services" src="img/icons/customs_blue.svg"></a>
+						<h2 class="header_services">Customs</h2>
+						<h4>This is our awesome short Customs txt</h4>
+						<a class="mcf_links" href="#">Meet the clearing Clerk!</a>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+
+			<!-- Services - Storage Section -->
+			<div class="services">
+				<div class="container">
+					<div class="col-sm-3"></div>
+					<div class="col-xs-12 col-sm-6">
+						<a><img class="img_services" src="img/icons/storage_blue.svg"></a>
+						<h2 class="header_services">Storage</h2>
+						<h4>This is our awesome short storage txt</h4>
+						<a class="mcf_links" href="#">Step inside our Warehouse!</a>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+
+			<!-- Contact - Click to call -->
+			<div class="click2call">
+				<div class="container">
+					<div class="col-sm-2"></div>
+					<div class="col-xs-12 col-sm-8">
+						<h1 class="header_call">+27 (1) 123456</h1>
+						<a class="mcf_links" href="#">You can find more about us here</a>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="container">
+				<footer>
+					<p>&copy; EasyShip 2015</p>
+				</footer>
+			</div>
+		</div>
+
+		<!-- BOARDING PROCESS -->  
+		<!-- LOGIN -->
+		<div class="modal" id="login">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2>Login</h2>
+					</div>
+					<div class="modal-body">
+						<form class="signin form-horizontal" role="form" id="login-form">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+										<input type="email" class="form-control input-lg" id="login-email" placeholder="Email">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<button type="submit" class="btn btn-send btn-primary btn-lg center-block">
+										Log in
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ENTER PASSWORD -->
+		<div class="modal" id="enter-password">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2>Enter Password</h2>
+					</div>
+					<div class="modal-body">
+						<h4>Welcome back, <i id="username"></i></h4>
+						<form class="signin form-horizontal" role="form" id="enter-password-form">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-serial"></span></span>
+										<input type="password" class="form-control input-lg" id="enter-password-user-password" placeholder="password">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<button type="submit" class="btn btn-send btn-primary btn-lg center-block">
+										Submit
+									</button>
+								</div>
+							</div>
+						</form>
+						<a type="button" class="btn" href="#">I forgot my password!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	    
+		<!-- CREATE PASSWORD -->
+		<div class="modal" id="create-password">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2>Create Password</h2>
+					</div>
+					<div class="modal-body">
+						<form class="signin form-horizontal" role="form" id="create-password-form">
+							<div class="form-group">
+
+								<div class="col-xs-12">
+									<label>Password Data</label>
+									<div class="input-group">
+										<span class="input-group-addon"></span>
+										<input type="password" class="form-control input-lg" id="create-password-new-password" 
+											placeholder="Password" required="required">
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"></span>
+										<input type="password" class="form-control input-lg" 
+											id="create-password-new-password-confirm" placeholder="Confirm Password"
+											required="required">
+									</div>
+								</div>
+
+								<div class="col-xs-12">
+									<br>
+									<label>Security Questions</label>
+									<div class="input-group">
+										<span class="input-group-addon"></span>
+										<input type="text" class="form-control input-lg" id="create-password-pet-name" 
+											placeholder="Pet name" required="required">
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"></span>
+										<input type="text" class="form-control input-lg" id="create-password-favourite-meal" 
+											placeholder="Favourite meal" required="required">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<button type="submit" class="btn btn-send btn-primary btn-lg center-block">
+										Submit
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- /END BOARDING PROCESS -->
+		<!-- Booking ship step 1 -->
+		<div class="window" style="display:none" id="startbook">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<h1>Booking</h1>
+				<span class="glyphicon glyphicon-remove" id="close-startbook"></span>
+			</nav>
+			<div style="margin-left:15%;margin-right:15%;margin-top:75px;margin-bottom:6px;display:block;width:70%;border:solid 1px #f5f5f5;">
+				<div style="display:inline-block;width:45%;padding:20px">
+					<img class="img_services" src="img/icons/package8.svg" style="width:85%;max-height:100px">
+					<h3 style="font-size:16px">Ship</h3>
+				</div>
+				<div style="display:inline-block;width:45%;padding:20px">
+					<img class="img_services" src="img/icons/customs.svg" style="width:85%;opacity:0.25;max-height:100px">
+					<h3 style="opacity:0.25;font-size:16px">Customs</h3>
+				</div>
+			</div>
+
+			<form id="startbook-form">
+
+				<label for="country-from" style="font-size:12px">From</label>
+				<select id="country-from" class="form-control"
+					style="margin-left:15%;margin-right:15%;display:block;width:70%">
+					<option value="zw">Zimbabwe</option>
+				</select>
+
+				<label for="country-to" style="margin-top:6px;font-size:12px">To</label>
+				<select id="country-to" class="form-control"
+					style="margin-left:15%;margin-right:15%;display:block;width:70%">
+					<option value="zw">Zimbabwe</option>
+				</select>
+
+				<div style="margin-top:10px;margin-left:15%;margin-right:15%;display:block;width:70%">
+					<label style="display:inline-block;margin-right:20px;width:80px;font-size:12px">volume</label>
+					<label style="display:inline-block;margin-left:20px;width:80px;font-size:12px">weight</label>
+				</div>
+
+				<div style="margin-top:2px;margin-left:15%;margin-right:15%;display:block;width:70%">
+					<input type="number" id="volume" class="form-control" style="display:inline-block;margin-right:20px;width:80px" min="0">
+					<input type="number" id="weight" class="form-control" style="display:inline-block;margin-left:20px;width:80px" min="0">
+				</div>
+
+				<div style="margin-left:15%;margin-right:15%;display:block;width:70%">
+					<div style="display:inline-block;margin-right:20px;width:80px;border:none" class="btn-danger" id="volume-unit" data-unit="m3">m³</div>
+					<div style="display:inline-block;margin-left:20px;width:80px;border:none" class="btn-primary" id="weight-unit" data-unit="kg">kg</div> 
+				</div>
+
+				<button type="submit" class="btn btn-lg btn-success"
+					style="margin-top:15px;margin-left:15%;margin-right:15%;display:block;width:70%">Get Price</button>
+			</form>
+		</div>
+
+		<!-- Booking ship step 2 -->
+		<div class="window" style="display:none" id="finishbook">
+
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<h1>Booking</h1>
+				<span class="glyphicon glyphicon-remove" id="close-finishbook"></span>
+			</nav>
+			<div class="second-navbar">
+				<div style="display:inline-block;width:70%;text-align:left">
+					<h5 style="color:white;margin-top:9px;margin-bottom:2px;">Wed, Dec 9</h5>
+					<h6 style="margin-top:2px;color:white">From somewhere to elsewhere</h6>
+				</div>
+				<div style="display:inline-block;width:25%;text-align:center;float:right;padding-top:6px;">
+					<h4 style="color:white">350$</h4>
+				</div>
+			</div>
+
+			<div style="width:100%;margin-top:100px;">
+				<div style="width:100%;padding-top:40px;padding-bottom:15px;padding-left:15px;padding-right:15px;text-align:justify;">
+					<p>Great! we can pickup your shipment in 27-56 min or we can 
+					<button class="btn btn-warning">pickup later</button>
+					give us a few more details and we can complete your shipment.</p>
+				</div>
+
+				<hr>
+
+				<form style="text-align:left;width:100%">
+					<div style="padding-left:25px;padding-right:25px;">
+						<h3>Pickup Address</h3>
+
+						<label style="margin-top:10px">Company</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<label style="margin-top:10px">First Name</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<label style="margin-top:10px">Last Name</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<label style="margin-top:10px">Address</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left:0;padding-right:10px;margin-top:10px">
+							<label>City</label>
+							<input type="text" class="form-control" style="display:block;width:100%"></input>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding-left:10px;padding-right:0;margin-top:10px">
+							<label>Zip</label>
+							<input type="number" class="form-control" style="display:block;width:100%"></input>
+						</div>
+
+						<label style="margin-top:10px">Country</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<label style="margin-top:10px;width:100%">Phone Number</label>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding:0">
+							<select class="form-control" style="width:100%">
+								<option>+27</option>
+							</select>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding:0">
+							<input type="text" class="form-control" style="width:100%"></input>
+						</div>
+
+						<br><br><br><hr>
+
+						<h3>Delivery Address</h3>
+
+						<label style="margin-top:10px">Address</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left:0;padding-right:10px;margin-top:10px">
+							<label>City</label>
+							<input type="text" class="form-control" style="display:block;width:100%"></input>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding-left:10px;padding-right:0;margin-top:10px">
+							<label>Zip</label>
+							<input type="number" class="form-control" style="display:block;width:100%"></input>
+						</div>
+
+						<label style="margin-top:10px">Country</label>
+						<input type="text" class="form-control" style="display:block;width:100%"></input>
+					
+						<br>
+					</div>
+
+					<div style="background-color:#2196F3;width:100%;color:white;padding-top:25px;padding-bottom:25px">
+						<p style="padding-left:25px;padding-right:25px;height:40px;font-size:16px">There's an extra charge to deliver to that area of:</p>
+						<p style="float:right;font-size:25px;margin-top:-20px;margin-right:25px">$10</p>
+					</div>
+
+					<div style="width:100%;padding-top:25px;padding-left:25px;padding-right:25px">
+						<p>Cargo details and shipping documents can be uploaded at the complete of booking<p>
+					</div>
+
+					<hr>
+
+					<div style="padding-left:25px;padding-right:25px;">
+						<label style="margin-top:10px">Contact email</label>
+						<input type="email" class="form-control" style="display:block;width:100%"></input>
+					</div>
+
+					<hr><br>
+
+					<button type="submit" class="btn btn-success" style="margin-left:25px;margin-right:25px;">book now!</button>
+
+					<br><br><br>
+				</form>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/vendor/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vendor/bootbox.min.js"></script>
+		<script>
+			window.logged = false;
+			function checkLogStatus(){
+				$.get('/metalogin/api/self/value/username').success(function(username){
+					window.logged = true;
+					$('.if-logged').show();
+					$('.if-not-logged').hide();
+					$('.logged-username').text(username);
+				}).fail(function(xhr,status,errorThrown){
+					window.logged = false;
+					$('.if-logged').hide();
+					$('.if-not-logged').show();
+				});
+			}
+			checkLogStatus();
+		</script>
+		<script>
+			window.emailAttempt = null;
+			$('#login-form').submit(function(){
+				window.emailAttempt = $('#login-email').val();
+				$.get('/metalogin/api/users',{
+					'page':1,
+					'amount':1,
+					'criteria':JSON.stringify({
+						'provider':'local',
+						'email':window.emailAttempt
+					}),
+					'fields':JSON.stringify(['username','ID'])
+				}).success(function(users){
+					$('#login-email').val('');
+					if (users[0]){
+						$('#login').modal().hide();
+						$('#username').text(users[0].username);
+						$('#enter-password').modal().show();
+					} else {
+						$('#login').modal().hide();
+						$('#create-password').modal().show();
+					}
+				}).fail(function(xhr,status,errorThrown){
+					bootbox.alert(errorThrown);
+				});
+				return false;
+			});
+
+			$('#enter-password-form').submit(function(){
+
+				var pass = $('#enter-password-user-password').val();
+
+				$.post('/metalogin/auth/local/role/client/login?noredirect',{
+					'email':window.emailAttempt,
+					'password':pass
+				}).success(function(){
+					window.emailAttempt = null;
+					checkLogStatus()
+					$('#enter-password').modal().hide();
+				}).fail(function(xhr,status,errorThrown){
+					bootbox.alert(errorThrown);
+				});
+				return false;
+			});
+
+			$('#create-password-form').submit(function(){
+
+				var pass = $('#create-password-new-password').val();
+				if (pass !== $('#create-password-new-password-confirm').val()){
+					bootbox.alert("Password and confirmation do not match");
+					return false;
+				}
+
+				var security = JSON.stringify({
+					pet:$('#create-password-pet-name').val(),
+					meal:$('#create-password-favourite-meal').val()
+				})
+
+				$.post('/metalogin/auth/local/role/client/signup?data=' + encodeURIComponent(security) + '&noredirect',{
+					'email':window.emailAttempt,
+					'password':pass
+				}).success(function(){
+					checkLogStatus();
+					window.emailAttempt = null;
+					$('#create-password').modal().hide();
+				}).fail(function(xhr,status,errorThrown){
+					bootbox.alert(errorThrown);
+				});
+				return false;
+			});
+		</script>
+		<script>
+			window.block = false;
+
+			var $menu = $('#menu');
+			var $overlay = $('.overlay');
+			var $body = $('body');
+			var $volume = $('#volume');
+			var $weight = $('#weight');
+
+			$('#togglemenu, .overlay, #login-in-menu-toggler').click(function(){
+				if ($menu.hasClass('in')){
+					$overlay.fadeOut(350);
+					$body.removeAttr('style');
+					$menu.animate({'width':'0px'},350,function(){
+						$menu.hide().removeClass('in');
+					});
+				} else {
+					$overlay.fadeIn(350);
+					if ($(window).width() > 400){
+						$('#innermenu').width(300);
+						$menu.css('width','0px').show().animate({'width':'320px'},350).addClass('in');
+					} else {
+						$('#innermenu').width(230);
+						$menu.css('width','0px').show().animate({'width':'250px'},350).addClass('in');
+					}
+					$body.css('overflow','hidden');
+				}
+			});
+
+			$(window).resize(function(){
+				if ($(window).width() >= 767){
+					$('.navbar-collapse').removeAttr('style').removeClass('in');
+					$overlay.hide();
+					$menu.hide();
+					$body.removeAttr('style');
+				}
+			});
+
+			$('#book').click(function(){
+				$('#mainpage').hide();
+				$('#startbook').fadeIn(350);
+				$body.scrollTop(0);
+			});
+
+			$('#close-startbook').click(function(){
+				$('#startbook').hide();
+				$('#mainpage').show();
+				$body.scrollTop(0);
+				$('input').val('');
+			});
+
+			$vu = $('#volume-unit');
+			$vu.click(function(){
+				var unit = $vu.attr('data-unit');
+				if (unit === 'm3'){
+					$vu.attr('data-unit','cm3');
+					$vu.text('cm³')
+				} else {
+					$vu.attr('data-unit','m3');
+					$vu.text('m³')
+				}
+			});
+
+
+			$wu = $('#weight-unit');
+			$wu.click(function(){
+				var unit = $wu.attr('data-unit');
+				if (unit === 'kg'){
+					$wu.attr('data-unit','g');
+					$wu.text('g')
+				} else {
+					$wu.attr('data-unit','kg');
+					$wu.text('kg')
+				}
+			});
+
+			$getprice = $('#startbook-form');
+			$getprice.submit(function(){
+				var volume_factor = $vu.attr('data-unit') === 'cm3' ? 100 : 1;
+				var volume = parseFloat($volume.val())*volume_factor;
+				if (isNaN(volume)){
+					bootbox.alert('Please provide a volume');
+					return false;
+				} else if (volume === 0){
+					bootbox.alert('Empty space not allowed for transport');
+					return false;
+				}
+
+				var weight_factor = $vu.attr('data-unit') === 'cm3' ? 100 : 1;
+				var weight = parseFloat($weight.val())*weight_factor;
+				if (isNaN(weight)){
+					bootbox.alert('Please provide a weight');
+					return false;
+				} else if (weight === 0){
+					bootbox.alert('We cannot transport weightless materials');
+					return false;
+				}
+
+				$('#startbook').hide();
+				$('#finishbook').fadeIn(350);
+				$body.scrollTop(0);
+
+				return false;
+			});
+
+			$('#close-finishbook').click(function(){
+				$('#finishbook').hide();
+				$('#mainpage').show();
+				$body.scrollTop(0);
+				$('input').val('');
+			});
+
+		</script>
+	</body>
+</html>

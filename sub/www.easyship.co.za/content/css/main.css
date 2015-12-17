@@ -1,0 +1,383 @@
+/*==========  Default Attributes  ==========*/
+
+h1, h2, h3, h4, h5, h6, {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+    font-family: 'Open-Sans', sans-serif;
+    text-decoration: none !important;
+    color: #000;
+}
+
+.bootbox {
+	z-index:6000;
+}
+
+.modal-backdrop {
+	background-color:rgba(0,0,0,0.25)!important;
+}
+
+* {
+	user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+}
+
+.second-navbar{
+	position:fixed;
+	top:50px;
+	width:100%;
+	height:50px;
+	background-color:#449d44;
+	border-color:#398439;
+	z-index:1030;
+}
+
+.window {
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-color:white;
+	z-index:4000;
+	text-align:center;
+}
+
+.window > .navbar {
+	background-color:#f5f5f5;
+	border-color:#ccc;
+	height:50px;
+}
+
+.window > .navbar > h1 {
+	font-family: 'Titillium Web', sans-serif;
+	margin-top:15px;
+	font-size:1.2rem;
+	color:#616161;
+	font-weight:400;
+}
+
+.window > .navbar > span {
+	position:fixed;
+	top:12.5px;
+	height:30px;
+	width:25px;
+	right:10px;
+	font-size:25px;
+	opacity:0.5;
+	cursor:pointer;
+}
+/*==========  Inner Sidebar Menu  ==========*/
+#menu {
+	overflow:hidden;
+	z-index:8000;
+	position:fixed;
+	padding:10px;
+	left:0;
+	border-right:solid 1px #ccc;
+	height:100%;
+	background-image:url('../img/pattern.png');
+	background-size:300px;
+	background-opacity:0.26;
+}
+
+#innermenu {
+    margin-top:15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align:left;
+    display: block;
+}
+
+#innermenu .inner-action {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#innermenu .inner-action > button {
+    text-align: center;
+    width: 85%;
+    max-width: 280px;
+    height: 50px;
+    background-color: #2196F3;
+    border: none;
+    color: #fff;
+    font-weight: 300;
+}
+
+#innermenu > .inner-primary > a {
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-bottom:20px;
+    display:block;
+}
+
+#innermenu > .inner-secondary > ul {
+    padding: 10px 15px;
+}
+
+#innermenu > .inner-secondary > ul > li {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 2px 0px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/*==========  /Inner Sidebar Menu  ==========*/
+
+.window > .navbar > span:hover {
+	opacity:0.75;
+}
+
+.navbar-custom {
+	background-image: none;
+	background-repeat: no-repeat;
+	background-color: #fff;
+	border-bottom: none;
+	box-shadow: none;
+}
+
+.logo{
+	max-height: 26px;
+}
+
+.btn_mcf_blue{
+	background: #2196F3;
+	border: none;
+	cursor:pointer;
+}
+
+.btn_mcf_trans{
+	background: rgb(0,0,0);
+	background: rgba(0,0,0,0);
+	cursor:pointer;
+}
+
+.jumbotron{
+	background-color: #fff;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.hero_title {
+	font-family: 'Titillium Web', sans-serif;
+	margin-top: 10%;
+	margin-bottom: 15%;
+	font-size: 2.6rem;
+	font-weight: 600;
+	font-style: normal;
+	text-align: center;
+}
+
+.hero_text {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	font-style: normal;
+	text-align: center;
+	display: none;
+}
+
+.servicing {
+	font-family: 'Titillium Web', sans-serif;
+	text-align: center;
+	font-size: 0.8rem;
+	font-weight: 300;
+	font-style: normal;
+	margin-top: 5%;
+}
+
+.hero_btn{
+	font-family: 'Open Sans', sans-serif;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+	width: 90%;
+}
+
+.hero_btn{
+	font-family: 'Open Sans', sans-serif;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+	width: 90%;
+}
+
+.services{
+	background-color: #fff;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+
+.img_services{
+	max-width: 140px;
+}
+
+.mcf_links{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+
+.header_services{
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 2.2rem;
+	padding: 20px 0px 20px 0px;
+}
+
+@media (max-width:767px) { 
+	.navbar-custom .navbar-right {
+		float: right;
+		padding-right: 15px;
+	}
+	.navbar-custom .nav.navbar-nav.navbar-right li {
+		float: right;
+	}
+  	.navbar-custom .nav.navbar-nav.navbar-right li > a {
+		padding:8px 5px;
+	}
+	.navbar-custom .navbar-toggle {
+        position: relative;
+        margin-left: -35px;
+		float: left;
+        border: none;
+	}
+	.navbar-custom .navbar-header {
+		float: left;
+		width: auto!important;
+		position: relative;
+		left:53%;
+		margin-left:-78px
+	}
+	.navbar-custom .navbar-collapse {
+		clear: both;
+		float: left;
+        width: 80% !important;
+		position:fixed;
+		top:0px;
+		z-index:5000;
+		background-color:white;
+		padding:0;
+		overflow-y:auto;
+		margin-left:0;
+		margin-right:0;
+		left:0;
+		float:left;
+		border:solid 1px #e7e7e7;
+		height:100%;
+		max-height:none !important;
+	}
+	.overlay {
+		z-index:4900;
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:0;
+		left:0;
+		opacity:0.8;
+		background-color:black;
+	}
+	.navbar-custom .navbar-collapse > form {
+		padding:0;
+		margin-left:10px;
+		margin-right:0;
+		float:left;
+		border:none;
+	}
+}
+
+/*========= Click to Call Section ==========*/
+        
+.click2call{
+	background-color: #2196F3;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.header_call{
+	font-size: 2rem;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 300;
+	text-decoration: none;
+	color: #fff;
+}
+
+/* Custom, iPhone Retina and forward */ 
+@media only screen and (min-width : 320px) {
+}
+
+/* Custom, iPhone Retina ONLY */ 
+@media only screen and (min-width : 320px) and (max-width: 409px) {
+    
+    .servicing {
+		font-size: 0.6rem;
+	}
+}
+
+
+
+/* Extra Small Devices, Phones and forward */ 
+@media only screen and (min-width : 410px) {
+        
+	.hero_title {
+		font-size: 3rem;
+	}
+        
+	.servicing {
+		font-size: 0.8rem;
+	}
+
+	.header_call{
+		font-size: 2.8rem;
+		font-family: 'Titillium Web', sans-serif;
+		font-weight: 300;
+		color: #fff;
+	}
+}
+
+/* Extra Small Devices, Phones ONLY */ 
+@media only screen and (min-width : 410px) and (max-width:767px) {
+
+}
+
+/* Small Devices, Tablets and forward*/
+@media only screen and (min-width : 768px) {
+    	.hero_title {
+		font-size: 3.4rem;
+	}
+
+}
+
+/* Small Devices, Tablets ONLY */
+@media only screen and (min-width : 768px) and (max-width:991px) {
+
+}
+
+/* Medium Devices, Desktops and forward*/
+@media only screen and (min-width : 992px) {	
+	
+}
+
+/* Medium Devices, Desktops ONLY*/
+@media only screen and (min-width : 992px) and (max-width:1199px) {
+}
+
+/* Large Devices, Wide Screens and forward*/
+@media only screen and (min-width : 1200px) {
+}
