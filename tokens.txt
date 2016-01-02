@@ -1,0 +1,11 @@
+email		rene@mccaine.me
+role		client
+username	Rene
+ID		random|123456
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InJlbmVAbWNjYWluZS5tZSIsInJvbGUiOiJjbGllbnQiLCJ1c2VybmFtZSI6IlJlbmUiLCJJRCI6InJhbmRvbXwxMjM0NTYiLCJpYXQiOjE0NTE3MjEyNTF9.7m7OSc-Ee9lVytZGE6jrhLXcL--yy-AH8roIlIaoPfE
+
+email		rene@mccaine.me
+role		supervisor
+username	Agent Mccaine
+ID		random|654321
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InJlbmVAbWNjYWluZS5tZSIsInJvbGUiOiJzdXBlcnZpc29yIiwidXNlcm5hbWUiOiJBZ2VudCBNY2NhaW5lIiwiSUQiOiJyYW5kb218NjU0MzIxIiwiaWF0IjoxNDUxNzIxNDEyfQ.U3Nb_jhMzVOmWAyXNs_XCNSDQEh1cDDk7i0fGdfdSNo
