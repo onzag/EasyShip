@@ -19,7 +19,7 @@ var Metalogin = require('./metalogin');
 var meta = new Metalogin({
 	isProxy:true,
 	database:{
-		uri:'sqlite://test.sqlite',
+		uri:'sqlite://users.db',
 		options:{logging:false}
 	},
 	successURL:'/index.html?lsuccess',
@@ -76,9 +76,7 @@ var meta = new Metalogin({
 	//default signature to act with the API
 	signatures:{
 		'default':{
-			jwt:{
-				expiresIn:10
-			},
+			jwt:{},
 			secret:'jotiLC9639FNlWKdVhELNQjcBnExOkKdCDkrFUBaXoQRHgiubWHdOZQFBZVxsntFU2Z7YI3cwWjeabhtE8CxmQD6Kperb39mqINjOLNowPyUSJYiW6D8EBhNT5lRqvbd',
 			fields:['email','role','username','ID']
 		}
@@ -122,9 +120,9 @@ var meta = new Metalogin({
 
 	//on self get only allow certain fields
 	onSelfGet:function(user,field,data,done){
-		if (field !== 'ID' || field !== 'username' ||
-			field !== 'picture' || field !== 'role' ||
-			field !== 'validated' || field !== 'email'){
+		if (field !== 'ID' && field !== 'username' &&
+			field !== 'picture' && field !== 'role' &&
+			field !== 'validated' && field !== 'email'){
 			return done(null,false);
 		}
 		return done(null,true);
@@ -325,6 +323,17 @@ module.exports = function(app,done){
 				db:'test.sqlite',
 				dir:'.'
 			});
+		app.use(function(req,res,next){
+			var origin = req.get('origin');
+			if (origin === 'http://www.easyship.co.za' || origin === 'https://www.easyship.co.za'){
+				res.setHeader('Access-Control-Allow-Origin',origin);
+				res.setHeader('Access-Control-Allow-Credentials',true);
+				res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS, PATCH, UPDATE, PUT');
+				res.setHeader('Access-Control-Allow-Headers',
+					'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');
+			}
+			next();
+		});
 		app.use(meta.initialize());
 
 		done(null);

@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var UniqueConstraintError = Sequelize.UniqueConstraintError;
 var errors = require('../errors/cargo.js');
 
 var model = {
@@ -28,7 +29,7 @@ var classMethods = {
 
 		return this.Cargo.create({'name':name,'description':description,
 				'amount':amount,'amount_factor':amount_factor}).then(function(cargo){
-			return city;
+			return cargo;
 		}).catch(function(err){
 			if (err instanceof UniqueConstraintError){
 				throw new errors.CargoAlreadyExistsError();

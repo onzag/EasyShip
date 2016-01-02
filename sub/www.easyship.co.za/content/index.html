@@ -449,9 +449,17 @@
 		<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vendor/bootbox.min.js"></script>
 		<script>
+
+			$.ajaxSetup({
+				xhrFields: {
+					withCredentials: true
+				}
+			});
+
+			var metaloginHost = 'http://user.easyship.co.za';
 			window.logged = false;
 			function checkLogStatus(){
-				$.get('/metalogin/api/self/value/username').success(function(username){
+				$.get(metaloginHost + '/metalogin/api/self/value/username').success(function(username){
 					window.logged = true;
 					$('.if-logged').show();
 					$('.if-not-logged').hide();
@@ -465,10 +473,11 @@
 			checkLogStatus();
 		</script>
 		<script>
+			var metaloginHost = 'http://user.easyship.co.za';
 			window.emailAttempt = null;
 			$('#login-form').submit(function(){
 				window.emailAttempt = $('#login-email').val();
-				$.get('/metalogin/api/users',{
+				$.get(metaloginHost + '/metalogin/api/users',{
 					'page':1,
 					'amount':1,
 					'criteria':JSON.stringify({
@@ -496,7 +505,7 @@
 
 				var pass = $('#enter-password-user-password').val();
 
-				$.post('/metalogin/auth/local/role/client/login?noredirect',{
+				$.post(metaloginHost + '/metalogin/auth/local/role/client/login?noredirect',{
 					'email':window.emailAttempt,
 					'password':pass
 				}).success(function(){
@@ -522,7 +531,7 @@
 					meal:$('#create-password-favourite-meal').val()
 				})
 
-				$.post('/metalogin/auth/local/role/client/signup?data=' + encodeURIComponent(security) + '&noredirect',{
+				$.post(metaloginHost + '/metalogin/auth/local/role/client/signup?data=' + encodeURIComponent(security) + '&noredirect',{
 					'email':window.emailAttempt,
 					'password':pass
 				}).success(function(){

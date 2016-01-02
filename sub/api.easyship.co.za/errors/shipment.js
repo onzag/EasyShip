@@ -1,62 +1,127 @@
 function CityFromError(){
-	this.name = 'CityFromErrorError';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'The City Where the Shipment Comes From doesn\'t Exist';
-	this.stack = (new Error()).stack;
 }
-CityFromError.prototype = new Error;
 
 function CityToError(){
-	this.name = 'CityToError';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'The City Where the Shipment Goes To doesn\'t Exist';
-	this.stack = (new Error()).stack;
 }
-CityToError.prototype = new Error;
 
-function CityPickupError(){
-	this.name = 'CityPickupError';
-	this.message = 'The City Where the Shipment wants to be picked from an address is not Applicable';
-	this.stack = (new Error()).stack;
+function NoDutiesError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'In cross-country trips duties are required';
 }
-CityPickupError.prototype = new Error;
 
-function CitySendError(){
-	this.name = 'CityPickupError';
-	this.message = 'The City Where the Shipment wants to be sent to an address is not Applicable';
-	this.stack = (new Error()).stack;
+function DutiesSpecifiedError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'In non-cross-country trips duties are not required';
 }
-CitySendError.prototype = new Error;
 
-function RelationDisabledError(){
-	this.name = 'RelationDisabledError';
-	this.message = 'The relation between those cities is disabled';
-	this.stack = (new Error()).stack;
+function NoDutyCodeError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'In cross-country trips a duty code is required';
 }
-RelationDisabledError.prototype = new Error;
 
-function RelationError(){
-	this.name = 'RelationError';
-	this.message = 'There\'s no Relation Between Those Cities';
-	this.stack = (new Error()).stack;
+function NoDutyValueError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'In cross-country trips the value of the shipment is required';
 }
-RelationError.prototype = new Error;
+
+function NoDutyProductNameError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'In cross-country trips the name of the shipment is required';
+}
+
+function InvalidDutyCodeError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'Invalid Duty Code';
+}
+
+function NoWarehousesFromError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'Cannot find warehouses in such city from';
+}
+
+function NoWarehousesToError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'Cannot find warehouses in such city to';
+}
 
 function InvalidCargoError(){
-	this.name = 'InvalidCargoError';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'Such cargo type does not exist';
-	this.stack = (new Error()).stack;
 }
-InvalidCargoError.prototype = new Error;
 
-function NoPriceDataError(){
-	this.name = 'NoPriceDataError';
-	this.message = 'There\'s no Data Associated with the Product';
-	this.stack = (new Error()).stack;
+function NoPriceWeightDataError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'There\'s no Data Associated with the Product That Weight';
 }
-NoPriceDataError.prototype = new Error;
+
+function NoPriceDistanceDataError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'There\'s no Data Associated with the Product That Weight';
+}
+
+function NoPriceDataPickSendError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'There\'s no Data Associated with the Product to Pick or Send';
+}
 
 module.exports = {
 	'CityFromError':CityFromError,
 	'CityToError':CityToError,
-	'RelationError':RelationError,
-	'NoPriceDataError':NoPriceDataError
+	'NoDutiesError':NoDutiesError,
+	'DutiesSpecifiedError':DutiesSpecifiedError,
+	'NoDutyCodeError':NoDutyCodeError,
+	'NoDutyValueError':NoDutyValueError,
+	'NoDutyProductNameError':NoDutyProductNameError,
+	'InvalidDutyCodeError':InvalidDutyCodeError,
+	'NoWarehousesFromError':NoWarehousesFromError,
+	'NoWarehousesToError':NoWarehousesToError,
+	'InvalidCargoError':InvalidCargoError,
+	'NoPriceWeightDataError':NoPriceWeightDataError,
+	'NoPriceDataPickSendError':NoPriceDataPickSendError
 }

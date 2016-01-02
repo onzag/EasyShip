@@ -1,20 +1,20 @@
-function WeightAlreadyExistsError(){
+function CountryDoesNotExistsError(){
 	this.constructor.prototype.__proto__ = Error.prototype;
 	Error.call(this)
 	Error.captureStackTrace(this, this.constructor)
 	this.name = this.constructor.name;
-	this.message = 'Weight was Already Defined';
+	this.message = 'Country does not exists';
 }
 
-function NegativeWeightError(){
+function CodeAlreadyExistsError(){
 	this.constructor.prototype.__proto__ = Error.prototype;
 	Error.call(this)
 	Error.captureStackTrace(this, this.constructor)
 	this.name = this.constructor.name;
-	this.message = 'Weight is negative';
+	this.message = 'Code Already exists';
 }
 
 module.exports = {
-	'WeightAlreadyExistsError':WeightAlreadyExistsError,
-	'NegativeWeightError':NegativeWeightError
+	'CountryDoesNotExistsError':CountryDoesNotExistsError,
+	'CodeAlreadyExistsError':CodeAlreadyExistsError
 }

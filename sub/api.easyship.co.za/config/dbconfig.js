@@ -1,4 +1,4 @@
 module.exports = {
-	URI:'sqlite://test.sqlite',
-	OPTIONS:{logging:console.log}
+	URI:'sqlite://api.db',
+	OPTIONS:{logging:false}
 }

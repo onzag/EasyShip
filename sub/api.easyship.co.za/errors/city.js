@@ -1,18 +1,20 @@
-function CityAlreadyExistsError(){
-	this.name = 'CityAlreadyExistsError';
-	this.message = 'City Already Exists';
-	this.stack = (new Error()).stack;
+function CountryDoesNotExistsError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'Country does not exists';
 }
-CityAlreadyExistsError.prototype = new Error;
 
-function CityPickupError(){
-	this.name = 'CityPickupError';
-	this.message = 'Pickup data for city is invalid';
-	this.stack = (new Error()).stack;
+function CityNameAlreadyExistsError(){
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
+	this.message = 'City name already exists';
 }
-CityPickupError.prototype = new Error;
 
 module.exports = {
-	'CityAlreadyExistsError':CityAlreadyExistsError,
-	'CityPickupError':CityPickupError
+	'CountryDoesNotExistsError':CountryDoesNotExistsError,
+	'CityNameAlreadyExistsError':CityNameAlreadyExistsError
 }

@@ -7,7 +7,7 @@ var config = {
 		{host:'localhost',port:8100},
 		{host:'localhost',port:8101}
 	],
-	DYNAMICURL:['/metalogin/'],
+	DYNAMICURL:['/'],
 
 	STATIC:false,
 	STATICURL:null,

@@ -1,23 +1,26 @@
 function InvalidDateRange(){
-	this.name = 'InvalidDateRange';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'The Provided Date Range is Invalid';
-	this.stack = (new Error()).stack;
 }
-InvalidDateRange.prototype = new Error;
 
 function InvalidDay(){
-	this.name = 'InvalidDay';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'The Day is Invalid';
-	this.stack = (new Error()).stack;
 }
-InvalidDay.prototype = new Error;
 
 function InvalidMonth(){
-	this.name = 'InvalidMonth';
+	this.constructor.prototype.__proto__ = Error.prototype;
+	Error.call(this)
+	Error.captureStackTrace(this, this.constructor)
+	this.name = this.constructor.name;
 	this.message = 'The Month is Invalid';
-	this.stack = (new Error()).stack;
 }
-InvalidMonth.prototype = new Error;
 
 module.exports = {
 	'InvalidDateRange':InvalidDateRange,

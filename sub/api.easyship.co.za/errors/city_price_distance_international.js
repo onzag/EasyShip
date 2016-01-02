@@ -1,20 +1,20 @@
-function WeightAlreadyExistsError(){
+function DistanceAlreadyExistsError(){
 	this.constructor.prototype.__proto__ = Error.prototype;
 	Error.call(this)
 	Error.captureStackTrace(this, this.constructor)
 	this.name = this.constructor.name;
-	this.message = 'Weight was Already Defined';
+	this.message = 'Distance was Already Defined';
 }
 
-function NegativeWeightError(){
+function NegativeDistanceError(){
 	this.constructor.prototype.__proto__ = Error.prototype;
 	Error.call(this)
 	Error.captureStackTrace(this, this.constructor)
 	this.name = this.constructor.name;
-	this.message = 'Weight is negative';
+	this.message = 'Distance is negative';
 }
 
 module.exports = {
-	'WeightAlreadyExistsError':WeightAlreadyExistsError,
-	'NegativeWeightError':NegativeWeightError
+	'DistanceAlreadyExistsError':DistanceAlreadyExistsError,
+	'NegativeDistanceError':NegativeDistanceError
 }
