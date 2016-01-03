@@ -47,6 +47,11 @@ module.exports = function(app,done){
 							res.writeHead(403,"Invalid Auth Token",{'content-type' : 'text/plain'});
 							res.end("Invalid Auth Token");
 						}
+					} else if (decoded.user === "undefined" || typeof(decoded.user) !== "object" || 
+						typeof(decoded.user.role) === "undefined" || typeof(decoded.user.email) === "undefined" ||
+						typeof(decoded.user.ID) === "undefined" || typeof(decoded.user.username) === "undefined"){
+						res.writeHead(403,"Invalid Auth Token Structure",{'content-type' : 'text/plain'});
+						res.end("Invalid Auth Token Structure");
 					} else {
 						req.user = decoded.user;
 						next();

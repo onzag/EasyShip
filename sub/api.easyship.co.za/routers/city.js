@@ -1,5 +1,5 @@
 var express = require('express');
-var cityerrors = require('./errors/city.js');
+var cityerrors = require('../errors/city.js');
 var ForeignKeyConstraintError = require('sequelize').ForeignKeyConstraintError;
 
 function throwError(res,code,error){
