@@ -118,7 +118,7 @@ module.exports = function(models){
 		}
 
 		models.Country.buildFrom(name,nlong,nlat).then(function(country){
-			res.json(country.toJSON());
+			res.json(country.get('ID'));
 		}).catch(function(err){
 			throwError(res,500,"Internal Error");
 		});

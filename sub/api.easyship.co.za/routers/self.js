@@ -20,7 +20,7 @@ module.exports = function(models){
 				'owner':req.user.ID
 			}
 		}).then(function(shipments){
-			res.json(shipments.map(function(shipment){return shipment.toJSON()}))
+			res.json(shipments.map(function(shipment){return shipment.get('ID')}))
 		}).catch(function(err){
 			return throwError(res,500,"Internal Error");
 		});
@@ -38,7 +38,7 @@ module.exports = function(models){
 				'reciever':req.user.ID
 			}
 		}).then(function(shipments){
-			res.json(shipments.map(function(shipment){return shipment.toJSON()}))
+			res.json(shipments.map(function(shipment){return shipment.get('ID')}))
 		}).catch(function(err){
 			return throwError(res,500,"Internal Error");
 		});

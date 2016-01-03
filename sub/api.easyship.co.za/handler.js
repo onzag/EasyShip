@@ -59,8 +59,8 @@ module.exports = function(app,done){
 	app.use(bodyParser.urlencoded({ extended: false }));
 
 	app.use(require('./routers/self.js')(models));
-	
-	//app.use(require('./routers/shipment.js')(models));
+	app.use(require('./routers/country.js')(models));
+	app.use(require('./routers/city.js')(models));
 	//app.use(require('./routers/payment.js'));
 	//app.use(require('./routers/location.js'));
 

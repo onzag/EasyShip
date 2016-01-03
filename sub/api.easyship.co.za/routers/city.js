@@ -11,7 +11,13 @@ module.exports = function(models){
 	var router = express.Router();
 
 	router.get('/api/v1/cities',function(req,res){
-		models.City.findAll().then(function(cities){
+		var country = req.query.country;
+		var whereClause = {};
+		if (typeof(country) !== "undefined"){
+			whereClause = {'country':country}
+		}
+
+		models.City.findAll({'where':whereClause}).then(function(cities){
 			res.json(cities.map(function(city){
 				return city.toJSON()
 			}));
@@ -154,7 +160,7 @@ module.exports = function(models){
 		}
 
 		models.City.buildFrom(country,name,nlong,nlat).then(function(city){
-			res.json(city.toJSON());
+			res.json(city.get('ID'));
 		}).catch(function(err){
 			if (err instanceof cityerrors.CountryDoesNotExistsError){
 				return throwError(res,404,"Country not found");
