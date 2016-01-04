@@ -71,6 +71,7 @@ module.exports = function(app,done){
 	app.use(require('./routers/international-price-distance.js')(models));
 	app.use(require('./routers/national-price-distance.js')(models));
 	app.use(require('./routers/local-price-distance.js')(models));
+	app.use(require('./routers/price-weight.js')(models));
 	//app.use(require('./routers/payment.js'));
 	//app.use(require('./routers/location.js'));
 

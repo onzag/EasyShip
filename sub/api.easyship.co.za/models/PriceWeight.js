@@ -11,10 +11,12 @@ var model = {
 
 	price:{
 		type:Sequelize.DECIMAL,
+		allowNull:false,
 		unique:true
 	},
 	weight:{
-		type:Sequelize.DECIMAL
+		type:Sequelize.DECIMAL,
+		allowNull:false
 	}
 }
 

@@ -548,13 +548,83 @@ Empty response, expect just a simple 200 status message.
 
 Empty response, expect just a simple 200 status message.
 
-### Delete an ipd (supervisor only)
+### Delete an lpd (supervisor only)
 
-`[DELETE]` `/api/v1/ipd/:id`
+`[DELETE]` `/api/v1/lpd/:id`
 
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
-|id|yes|encoded text|in url|the id of the ipd|
+|id|yes|encoded text|in url|the id of the lpd|
+
+Empty response, expect just a simple 200 status message.
+
+### Price and Weight
+
+### Get all price and weight data
+
+`[GET]` `/api/v1/pws`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+
+JSON response, expect an array of object with data of an ID, price and weight
+
+### Get an specific price and weight data
+
+`[GET]` `/api/v1/pw/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the pw|
+
+JSON response, Expect an object with data of an ID, price and weight
+
+### Create a new price and weight data-point (supervisor only)
+
+`[PUT]` `/api/v1/pw`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|price|yes|encoded text| in body| the price as a float value|
+|weight|yes|encoded text|in body| the weight as a float value|
+
+JSON response, expect a numeric identifier
+
+### Update a price of a price-weight data-point (supervisor only)
+
+`[POST]` `/api/v1/pw/:id/price`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the pw|
+|price|yes|encoded text| in body| the price as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Update the weight of a pw point (supervisor only)
+
+`[POST]` `/api/v1/pw/:id/weight`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the pw|
+|weight|yes|encoded text|in body| the weight as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Delete an pw point (supervisor only)
+
+`[DELETE]` `/api/v1/pw/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the pw|
 
 Empty response, expect just a simple 200 status message.

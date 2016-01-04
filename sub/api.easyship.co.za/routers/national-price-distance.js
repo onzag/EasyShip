@@ -43,6 +43,8 @@ module.exports = function(models){
 			return throwError(res,400,"You need to specify the price of the unit");
 		} else if (isNaN(distance)){
 			return throwError(res,400,"You need to specify the distance to start applying");
+		} else if (distance < 0){
+			return throwError(res,400,"The distance cannot be negative");
 		}
 
 		models.CityPriceDistanceNational.buildFrom(price,distance).then(function(npd){
@@ -50,8 +52,6 @@ module.exports = function(models){
 		}).catch(function(err){
 			if (err instanceof citypricedistancenationalerrrors.DistanceAlreadyExistsError){
 				return throwError(res,422,"Another distance point already takes place in the exact range");
-			} else if (err instanceof citypricedistancenationalerrrors.NegativeDistanceError){
-				return throwError(res,400,"The distance cannot be negative");
 			} else {
 				return throwError(res,500,"Internal Error");
 			}
