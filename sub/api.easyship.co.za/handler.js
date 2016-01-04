@@ -67,6 +67,10 @@ module.exports = function(app,done){
 	app.use(require('./routers/country.js')(models));
 	app.use(require('./routers/city.js')(models));
 	app.use(require('./routers/cargo.js')(models));
+	app.use(require('./routers/duty.js')(models));
+	app.use(require('./routers/international-price-distance.js')(models));
+	app.use(require('./routers/national-price-distance.js')(models));
+	app.use(require('./routers/local-price-distance.js')(models));
 	//app.use(require('./routers/payment.js'));
 	//app.use(require('./routers/location.js'));
 

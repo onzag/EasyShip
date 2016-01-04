@@ -308,6 +308,7 @@ JSON response, expect a numeric identifier
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the npd|
 |price|yes|encoded text| in body| the price as a float value|
 
 Empty response, expect just a simple 200 status message.
@@ -319,6 +320,7 @@ Empty response, expect just a simple 200 status message.
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the npd|
 |distance|yes|encoded text|in body| the distance as a float value|
 
 Empty response, expect just a simple 200 status message.
@@ -376,6 +378,7 @@ JSON response, expect a numeric identifier
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the ipd|
 |price|yes|encoded text| in body| the price as a float value|
 
 Empty response, expect just a simple 200 status message.
@@ -387,6 +390,7 @@ Empty response, expect just a simple 200 status message.
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the ipd|
 |distance|yes|encoded text|in body| the distance as a float value|
 
 Empty response, expect just a simple 200 status message.
@@ -482,5 +486,75 @@ Empty response, expect just a simple 200 status message.
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
 |id|yes|encoded text|in url|the id of the duty|
+
+Empty response, expect just a simple 200 status message.
+
+### Local Distance Prices
+
+### Get all local price distance data
+
+`[GET]` `/api/v1/lpds`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+
+JSON response, expect an array of object with data of an ID, price and distance
+
+### Get an specific local price distance data
+
+`[GET]` `/api/v1/lpd/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the lpd|
+
+JSON response, Expect an object with data of an ID, price and distance
+
+### Create a new lpd (supervisor only)
+
+`[PUT]` `/api/v1/lpd`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|price|yes|encoded text| in body| the price as a float value|
+|distance|yes|encoded text|in body| the distance as a float value|
+
+JSON response, expect a numeric identifier
+
+### Update an lpd price (supervisor only)
+
+`[POST]` `/api/v1/lpd/:id/price`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the lpd|
+|price|yes|encoded text| in body| the price as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Update an lpd distance (supervisor only)
+
+`[POST]` `/api/v1/lpd/:id/distance`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the lpd|
+|distance|yes|encoded text|in body| the distance as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Delete an ipd (supervisor only)
+
+`[DELETE]` `/api/v1/ipd/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the ipd|
 
 Empty response, expect just a simple 200 status message.
