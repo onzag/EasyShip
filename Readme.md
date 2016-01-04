@@ -14,7 +14,7 @@ JSON response, expect an array of ID's
 
 ### Get all shipment data of incoming shipments (only clients)
 
-`[GET]` `/api/v1/self/shipments/sent`
+`[GET]` `/api/v1/self/shipments/incoming`
 
 |Variable|required|type|method|description|
 |:---------|:---------|:-------|:-------|:-------------------------|
