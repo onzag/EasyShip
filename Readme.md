@@ -628,3 +628,117 @@ Empty response, expect just a simple 200 status message.
 |id|yes|encoded text|in url|the id of the pw|
 
 Empty response, expect just a simple 200 status message.
+
+## Surcharges
+
+### Get all surcharges
+
+`[GET]` `/api/v1/surcharges`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+
+JSON response, expect an array of objects containing ID, type, name, from, to, on, amount, amount_factor
+
+### Get an specific surcharge
+
+`[GET]` `/api/v1/surcharge/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+
+JSON response, expect an object containing ID, type, name, from, to, on, amount, amount_factor
+
+### Add a new surcharge (only supervisor)
+
+`[PUT]` `/api/v1/surcharge`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|name|yes|encoded text|in body|the name for the surcharge|
+|amount|yes|encoded text|in body|the amount for the surcharge as a float|
+|factor|yes|encoded text|in body|the factor as '%' or '+'|
+|by|yes|encoded text|in body|can only be 'range', 'month' or 'day'|
+|from|if by is 'range'|encoded text|in body|the date from in which the surcharge applies, as an integer|
+|to|if by is 'range'|encoded text|in body|the date to in which the surcharge applies, as an integer|
+|month|if by is 'month'|encoded text|in body|an integer from 0 to 11|
+|day|if by is 'day'|encoded text|in body|an integer from 0 to 6|
+
+JSON response, expect a numeric ID
+
+### Update a surcharge's name (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/name`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|name|yes|encoded text|in body|the name for the surcharge|
+
+Empty response, expect a simple 200 status.
+
+### Update a surcharge's amount (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/amount`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|amount|yes|encoded text|in body|the amount for the surcharge as a float|
+
+Empty response, expect a simple 200 status.
+
+### Update a surcharge's factor (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/amount`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|factor|yes|encoded text|in body|the factor as '%' or '+'|
+
+Empty response, expect a simple 200 status.
+
+### Update a surcharge's range if the surcharge is of type range (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/range`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|from|yes|encoded text|in body|the date from in which the surcharge applies, as an integer|
+|to|yes|encoded text|in body|the date to in which the surcharge applies, as an integer|
+
+Empty response, expect a simple 200 status.
+
+### Update a surcharge's month if the surcharge is of type month (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/month`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|month|yes|encoded text|in body|an integer from 0 to 11|
+
+Empty response, expect a simple 200 status.
+
+### Update a surcharge's day if the surcharge is of type day (only supervisor)
+
+`[POST]` `/api/v1/surcharge/:id/month`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the surcharge|
+|day|yes|encoded text|in body|an integer from 0 to 6|
+
+Empty response, expect a simple 200 status.
