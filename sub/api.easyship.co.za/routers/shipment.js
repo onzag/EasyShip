@@ -3,7 +3,7 @@ var shipmenterrors = require('./errors/shipment.js')
 
 function throwError(res,code,error){
 	res.writeHead(code,error,{'content-type' : 'text/plain'})
-	res.send(error);
+	res.end(error);
 }
 
 module.exports = function(models){

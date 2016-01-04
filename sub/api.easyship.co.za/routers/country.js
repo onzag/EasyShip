@@ -2,7 +2,7 @@ var express = require('express');
 
 function throwError(res,code,error){
 	res.writeHead(code,error,{'content-type' : 'text/plain'})
-	res.send(error);
+	res.end(error);
 }
 
 module.exports = function(models){

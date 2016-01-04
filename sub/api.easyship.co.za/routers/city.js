@@ -149,7 +149,7 @@ module.exports = function(models){
 		var name = req.body.name;
 		var nlong = parseFloat(req.body['long']);
 		var nlat = parseFloat(req.body['lat']);
-		var country = parseInt(req.body.country)
+		var country = parseInt(req.body.country);
 
 		if (!name){
 			return throwError(res,400,"You need to specify a name for the city");

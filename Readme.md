@@ -157,3 +157,77 @@ Empty response, expect no response but a 200 status.
 |lat|yes|encoded text|in body|the latitude as a float|
 
 JSON response, expect a number that represents the ID.
+
+## cargo
+
+### Get all cargo types
+
+`[GET]` `/api/v1/cargos`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+
+JSON response, expect an array of object with all the cargo types
+
+### Add a new cargo type (supervisor only)
+
+`[PUT]` `/api/v1/cargo`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|name|yes|encoded text|in body|the name of the cargo type (eg. food, electronics)|
+|description|yes|encoded text|in body|the description of the cargo type|
+|amount|yes|encoded text|in body|a float with refers to a cargo type charge|
+|factor|yes|encoded text|in body|can only be '%' or '+' which refers to a multiplication value or adddition|
+
+JSON response, expect a numeric id
+
+### Update cargo name
+
+`[POST]` `/api/v1/cargo/:id/name`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the cargo type|
+|name|yes|encoded text|in body|the new name|
+
+Empty response, expect just a simple 200 status message.
+
+### Update cargo description
+
+`[POST]` `/api/v1/cargo/:id/description`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the cargo type|
+|description|yes|encoded text|in body|the new description|
+
+Empty response, expect just a simple 200 status message.
+
+### Update cargo amount
+
+`[POST]` `/api/v1/cargo/:id/amount`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the cargo type|
+|amount|yes|encoded text|in body|the new amount as a float|
+
+Empty response, expect just a simple 200 status message.
+
+### Update cargo factor
+
+`[POST]` `/api/v1/cargo/:id/factor`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the cargo type|
+|factor|yes|encoded text|in body|the new factor as '%' or '+'|
+
+Empty response, expect just a simple 200 status message.
