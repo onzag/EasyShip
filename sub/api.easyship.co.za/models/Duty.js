@@ -4,28 +4,37 @@ var ForeignKeyConstraintError = Sequelize.ForeignKeyConstraintError;
 var errors = require('../errors/duty.js');
 
 var model = {
+	ID:{
+		type: Sequelize.INTEGER.UNSIGNED,
+		primaryKey:true,
+		autoIncrement: true
+	},
+
 	country:{
 		type: Sequelize.INTEGER.UNSIGNED,
 		references:{
 			model:'Countries',
 			key:'ID'
 		},
-		onDelete:'cascade'	
+		onDelete:'cascade',
+		unique:'percountry'
 	},
-
 	code:{
 		type: Sequelize.TEXT,
-		primaryKey:true,
-		unique:true
+		allowNull:false,
+		unique:'percountry'
 	},
 
 	name:{
-		type: Sequelize.TEXT
+		type: Sequelize.TEXT,
+		allowNull:false
 	},
 	description:{
+		allowNull:false,
 		type: Sequelize.TEXT
 	},
 	amount:{
+		allowNull:false,
 		type: Sequelize.DECIMAL
 	}
 }

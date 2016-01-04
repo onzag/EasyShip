@@ -15,12 +15,11 @@ module.exports = function(models){
 		}
 
 		models.Shipment.findAll({
-			'attributes':['ID'],
 			'where':{
 				'owner':req.user.ID
 			}
 		}).then(function(shipments){
-			res.json(shipments.map(function(shipment){return shipment.get('ID')}))
+			res.json(shipments.map(function(shipment){return shipment.toJSON()}))
 		}).catch(function(err){
 			return throwError(res,500,"Internal Error");
 		});
@@ -33,12 +32,11 @@ module.exports = function(models){
 		}
 
 		models.Shipment.findAll({
-			'attributes':['ID'],
 			'where':{
 				'reciever':req.user.ID
 			}
 		}).then(function(shipments){
-			res.json(shipments.map(function(shipment){return shipment.get('ID')}))
+			res.json(shipments.map(function(shipment){return shipment.toJSON()}))
 		}).catch(function(err){
 			return throwError(res,500,"Internal Error");
 		});

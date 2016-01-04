@@ -1,5 +1,5 @@
 var express = require('express');
-var cargoerrors = require('../errors/cargo.js');
+var dutyerrors = require('../errors/duty.js');
 var Sequelize = require('sequelize');
 var UniqueConstraintError = Sequelize.UniqueConstraintError;
 
@@ -11,47 +11,69 @@ function throwError(res,code,error){
 module.exports = function(models){
 	var router = express.Router();
 	
-	router.get('/api/v1/cargos',function(req,res){
-		models.Cargo.findAll().then(function(cargos){
-			res.json(cargos.map(function(cargo){return cargo.toJSON()}))
+	router.get('/api/v1/duties',function(req,res){
+		var country = req.query.country;
+		var whereClause = {};
+		if (country){
+			whereClause['country'] = country;
+		}
+
+		models.Duty.findAll(whereClause).then(function(duties){
+			res.json(duties.map(function(duty){return duty.toJSON()}))
 		}).catch(function(err){
 			return throwError(res,500,"Internal Error");
 		});
 	});
 
-	router.put('/api/v1/cargo',function(req,res){
+	router.get('/api/v1/duty/:id',function(req,res){
+		var id = req.params.id;
+		models.Duty.findAll({
+			'where':{'ID':id}
+		}).then(function(duty){
+			res.json(duty.toJSON());
+		}).catch(function(err){
+			return throwError(res,500,"Internal Error");
+		});
+	});
+
+	router.put('/api/v1/duty',function(req,res){
 
 		if (req.user.role !== 'supervisor'){
 			return throwError(res,403,"You must be a supervisor to perform this action")
 		}
 
+		var country = parseInt(req.body.country);
+		var code = req.body.code;
 		var name = req.body.name;
 		var description = req.body.description;
 		var amount = parseFloat(req.body.amount);
-		var amount_factor = req.body.factor;
 
-		if (!name){
+		if (isNaN(country)){
+			return throwError(res,400,"You need to specify a valid country id");
+		} else if (!code){
+			return throwError(res,400,"You need to specify a code");
+		} else if (!name){
 			return throwError(res,400,"You need to specify a name");
 		} else if (!description){
 			return throwError(res,400,"You need to specify a description");
 		} else if (isNaN(amount)){
-			return throwError(res,400,"You need to specify an amount");
-		} else if (amount_factor !== '+' && amount_factor !== "%"){
-			return throwError(res,400,"You need to specify a factor which must be percentual or addition");
+			return throwError(res,400,"You need to specify a multiplying amount");
 		}
 
-		models.Cargo.buildFrom(name,description,amount,amount_factor).then(function(cargo){
-			res.json(cargo.get('ID'));
+		models.Duty.buildFrom(country,code,name,description,amount).then(function(duty){
+			res.json(duty.get('ID'));
 		}).catch(function(err){
-			if (err instanceof cargoerrors.CargoAlreadyExistsError){
-				return throwError(res,422,"Cargo Already Exists");
+			if (err instanceof dutyerrors.CodeAlreadyExistsError){
+				return throwError(res,422,"Code Already Exists");
+			} else if (err instanceof dutyerrors.CountryDoesNotExistsError){
+				return throwError(res,400,"Country does not Exist");
 			} else {
 				return throwError(res,500,"Internal Error");
 			}
 		});
 	});
 
-	router.post('/api/v1/cargo/:id/name',function(req,res){
+	router.post('/api/v1/duty/:id/name',function(req,res){
 		if (req.user.role !== 'supervisor'){
 			return throwError(res,403,"You must be a supervisor to perform this action")
 		}
@@ -62,7 +84,7 @@ module.exports = function(models){
 			return throwError(res,400,"You need to specify a name");
 		}
 		
-		models.Cargo.update({
+		models.Duty.update({
 			'name':name
 		},{
 			'where':{
@@ -70,20 +92,16 @@ module.exports = function(models){
 			}
 		}).spread(function(ac,ar){
 			if (ac === 0){
-				return throwError(res,404,"Cargo not found");
+				return throwError(res,404,"Duty not found");
 			}
 
 			res.status(200).send();
 		}).catch(function(err){
-			if (err instanceof UniqueConstraintError){
-				return throwError(res,422,"Cargo Already Exists");
-			} else {
-				return throwError(res,500,"Internal Error");
-			}
+			return throwError(res,500,"Internal Error");
 		});
 	});
 
-	router.post('/api/v1/cargo/:id/description',function(req,res){
+	router.post('/api/v1/duty/:id/description',function(req,res){
 		if (req.user.role !== 'supervisor'){
 			return throwError(res,403,"You must be a supervisor to perform this action")
 		}
@@ -94,7 +112,7 @@ module.exports = function(models){
 			return throwError(res,400,"You need to specify a description");
 		}
 		
-		models.Cargo.update({
+		models.Duty.update({
 			'description':description
 		},{
 			'where':{
@@ -102,7 +120,7 @@ module.exports = function(models){
 			}
 		}).spread(function(ac,ar){
 			if (ac === 0){
-				return throwError(res,404,"Cargo not found");
+				return throwError(res,404,"Duty not found");
 			}
 
 			res.status(200).send();
@@ -111,7 +129,7 @@ module.exports = function(models){
 		});
 	});
 
-	router.post('/api/v1/cargo/:id/amount',function(req,res){
+	router.post('/api/v1/duty/:id/amount',function(req,res){
 		if (req.user.role !== 'supervisor'){
 			return throwError(res,403,"You must be a supervisor to perform this action")
 		}
@@ -122,7 +140,7 @@ module.exports = function(models){
 			return throwError(res,400,"You need to specify an amount");
 		}
 		
-		models.Cargo.update({
+		models.Duty.update({
 			'amount':amount
 		},{
 			'where':{
@@ -130,7 +148,7 @@ module.exports = function(models){
 			}
 		}).spread(function(ac,ar){
 			if (ac === 0){
-				return throwError(res,404,"Cargo not found");
+				return throwError(res,404,"Duty not found");
 			}
 
 			res.status(200).send();
@@ -139,45 +157,17 @@ module.exports = function(models){
 		});
 	});
 
-	router.post('/api/v1/cargo/:id/factor',function(req,res){
-		if (req.user.role !== 'supervisor'){
-			return throwError(res,403,"You must be a supervisor to perform this action")
-		}
-
-		var amount_factor = req.body.factor;
-
-		if (amount_factor !== '+' && amount_factor !== "%"){
-			return throwError(res,400,"You need to specify a factor which must be percentual or addition");
-		}
-		
-		models.Cargo.update({
-			'amount_factor':amount_factor
-		},{
-			'where':{
-				'ID':id
-			}
-		}).spread(function(ac,ar){
-			if (ac === 0){
-				return throwError(res,404,"Cargo not found");
-			}
-
-			res.status(200).send();
-		}).catch(function(err){
-			return throwError(res,500,"Internal Error");
-		});
-	});
-
-	router.delete('/api/v1/cargo/:id',function(req,res){
+	router.delete('/api/v1/duty/:id',function(req,res){
 		if (req.user.role !== 'supervisor'){
 			return throwError(res,403,"You must be a supervisor to perform this action")
 		}
 
 		var id = req.params.id;
-		models.Cargo.destroy({
+		models.Duty.destroy({
 			'where':{'ID':id}
 		}).then(function(dr){
 			if (dr === 0){
-				return throwError(res,404,"Cargo not found");
+				return throwError(res,404,"Duty not found");
 			}
 			res.status(200).send();
 		}).catch(function(err){

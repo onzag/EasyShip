@@ -10,7 +10,7 @@
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
 
-JSON response, expect an array of ID's
+JSON response, expect an array of Object containing shipment data
 
 ### Get all shipment data of incoming shipments (only clients)
 
@@ -20,7 +20,7 @@ JSON response, expect an array of ID's
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
 
-JSON response, expect an array of ID's
+JSON response, expect an array of Object containing shipment data
 
 ## country
 
@@ -82,6 +82,17 @@ Empty response, expect no response but a 200 status.
 |lat|yes|encoded text|in body|the latitude as a float|
 
 JSON response, expect a number that represents the ID.
+
+### Delete country (supervisor only)
+
+`[DELETE]` `/api/v1/country/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the country|
+
+Empty response, expect just a simple 200 status message.
 
 ## city
 
@@ -158,6 +169,18 @@ Empty response, expect no response but a 200 status.
 
 JSON response, expect a number that represents the ID.
 
+### Delete a city (supervisor only)
+
+`[DELETE]` `/api/v1/city/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the city|
+
+Empty response, expect just a simple 200 status message.
+
+
 ## cargo
 
 ### Get all cargo types
@@ -232,7 +255,18 @@ Empty response, expect just a simple 200 status message.
 
 Empty response, expect just a simple 200 status message.
 
-### National Distance Prices
+### Delete cargo type (supervisor only)
+
+`[DELETE]` `/api/v1/cargo/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the cargo type|
+
+Empty response, expect just a simple 200 status message.
+
+## National Distance Prices
 
 ### Get all national price distance data
 
@@ -286,6 +320,17 @@ Empty response, expect just a simple 200 status message.
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
 |distance|yes|encoded text|in body| the distance as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Delete an npd (supervisor only)
+
+`[DELETE]` `/api/v1/npd/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the npd|
 
 Empty response, expect just a simple 200 status message.
 
@@ -343,5 +388,99 @@ Empty response, expect just a simple 200 status message.
 |:---------|:---------|:-------|:-------|:-------------------------|
 |authtoken|yes|encoded text| in querystring | the auth token |
 |distance|yes|encoded text|in body| the distance as a float value|
+
+Empty response, expect just a simple 200 status message.
+
+### Delete an ipd (supervisor only)
+
+`[DELETE]` `/api/v1/ipd/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the ipd|
+
+Empty response, expect just a simple 200 status message.
+
+## Duties
+
+### Get all duties
+
+`[GET]` `/api/v1/duties`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|country|no|encoded text|in querystring| the id of the country|
+
+JSON response, expect an array of object with data of an ID, country, code, name, description and amount
+
+### Get a specific duty
+
+`[GET]` `/api/v1/duty/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url| the id of the duty|
+
+JSON response, expect an object with data of an ID, country, code, name, description and amount
+
+### Add a new duty (supervisor only)
+
+`[PUT]` `/api/v1/duty`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|name|yes|encoded text|in body|a human readable name for the duty|
+|description|yes|encoded text|in body|a human readable description|
+|code|yes|encoded text|in body|the code of the duty|
+|country|yes|encoded text|in body|the numeric identifier for the country|
+|amount|yes|encoded text|in body|a float which is used to calculate the duty price by mutiplying with the value of the item|
+
+JSON response, expect a numeric id
+
+### Update duty name (supervisor only)
+
+`[POST]` `/api/v1/duty/:id/name`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|name|yes|encoded text|in body|the new name|
+
+Empty response, expect just a simple 200 status message.
+
+### Update duty description (supervisor only)
+
+`[POST]` `/api/v1/duty/:id/description`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|description|yes|encoded text|in body|the new description|
+
+Empty response, expect just a simple 200 status message.
+
+### Update duty amount (supervisor only)
+
+`[POST]` `/api/v1/duty/:id/amount`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|amount|yes|encoded text|in body|the new amount|
+
+Empty response, expect just a simple 200 status message.
+
+### Delete an duty (supervisor only)
+
+`[DELETE]` `/api/v1/duty/:id`
+
+|Variable|required|type|method|description|
+|:---------|:---------|:-------|:-------|:-------------------------|
+|authtoken|yes|encoded text| in querystring | the auth token |
+|id|yes|encoded text|in url|the id of the duty|
 
 Empty response, expect just a simple 200 status message.

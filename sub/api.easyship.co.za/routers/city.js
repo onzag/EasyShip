@@ -170,5 +170,23 @@ module.exports = function(models){
 		});
 	});
 
+	router.delete('/api/v1/city/:id',function(req,res){
+		if (req.user.role !== 'supervisor'){
+			return throwError(res,403,"You must be a supervisor to perform this action")
+		}
+
+		var id = req.params.id;
+		models.City.destroy({
+			'where':{'ID':id}
+		}).then(function(dr){
+			if (dr === 0){
+				return throwError(res,404,"City not found");
+			}
+			res.status(200).send();
+		}).catch(function(err){
+			return throwError(res,500,"Internal Error");
+		});
+	});
+
 	return router;
 }
